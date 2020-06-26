@@ -22,27 +22,16 @@
 
       firebase.auth().onAuthStateChanged((user) => {
         console.log(user);
-
-        //------------------------------------
-        // 未ログイン状態で訪れた場合
-        //------------------------------------
         if (user === null) {
-          showMessage('Not Login', 'ログインが必要な画面です');
+          showMessage('Not Login', 'You need to log in');
           return false;
         }
-
-        //------------------------------------
-        // メアド確認済み
-        //------------------------------------
         if (user.emailVerified) {
           showMessage(
             'Login Complete!',
-            `${user.displayName}さんがログインしました`
+            `Now ${user.displayName} LoggedInn`
           );
         }
-        //------------------------------------
-        // メアド未確認
-        //------------------------------------
         else {
           const actionCodeSettings = {
             url: `https://kingstonelibrary.github.io/PWAmailAuthMailConfirm/success.html`,
@@ -52,13 +41,13 @@
             .then(() => {
               showMessage(
                 'Send confirm mail',
-                `${user.email}宛に確認メールを送信しました`
+                `sent confirmation mail to ${user.email}`
               );
             })
             .catch((error) => {
               showMessage(
                 '[Error] Can not send mail',
-                `${user.email}宛に確認メールを送信できませんでした: ${error}`
+                `we couldn't send mail to ${user.email}: ${error}`
               );
             });
         }

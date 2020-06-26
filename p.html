@@ -24,13 +24,10 @@
     let port   = (domain === 'localhost')?  5000:80;
 
     //----------------------------------------------
-    // Firebase UIの設定
+    // Firebase UI
     //----------------------------------------------
     var uiConfig = {
-        // ログイン完了時のリダイレクト先
         signInSuccessUrl: 'success.html',
-
-        // 利用する認証機能
         signInOptions: [
           {
             provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
@@ -39,9 +36,7 @@
           }
         ],
 
-        // 利用規約のURL(任意で設定)
         tosUrl: 'http://example.com/kiyaku/',
-        // プライバシーポリシーのURL(任意で設定)
         privacyPolicyUrl: 'http://example.com/privacy'
       };
 
